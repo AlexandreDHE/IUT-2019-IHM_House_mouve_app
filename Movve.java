@@ -29,8 +29,6 @@ public class Movve implements MouseListener{
 	public void mouseClicked(MouseEvent e){
 		if(e.getComponent().equals(this.j)){
 			this.j.inventaire();
-		}else{
-			this.j.menu();
 		}
 	}
 	public void mousePressed(MouseEvent e){}         

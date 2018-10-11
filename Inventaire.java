@@ -27,6 +27,7 @@ public class Inventaire extends JPanel{
 		c.fill=GridBagConstraints.BOTH;
 		Img ret = new Img("<.png",this);
 		ret.addMouseListener(new Movve(ret));
+		ret.addMouseListener(new Mouse(v));
 		ret.setHorizontalAlignment(JLabel.LEFT);
 		this.add(ret,c);
 		c.gridx = 1;
