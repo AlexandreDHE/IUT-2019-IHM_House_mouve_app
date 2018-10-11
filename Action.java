@@ -4,8 +4,14 @@ import java.awt.event.*;
 
 public class Action implements ActionListener {
 	private Inventaire a;
+	private NewPanMeuble meub;
+	private JTextField y;
 	public Action(Inventaire b){
 		this.a=b;
+	}
+	public Action(NewPanMeuble v,JTextField b){
+		this.meub = v;
+		this.y=b;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e){
@@ -16,6 +22,9 @@ public class Action implements ActionListener {
 		}
 		else if(e.getActionCommand().equals("Ajouter")){
 			this.a.ajout();
+		}
+		else if(e.getActionCommand().equals("Ajouter le meuble")){
+			this.meub.ecrit(this.y.getText());
 		}
 	}
 }

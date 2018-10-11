@@ -8,18 +8,29 @@ public class NewPanMeuble extends JPanel{
 	private Slide[] slide;
 	private Labb[][] lab;
 	private JPanel[] pan;
-	public NewPanMeuble(){
+	private JTextField field;
+	private int longu;
+	private int larg;
+	private int haut;
+	private int elt;
+	private int longg;
+	private int largg;
+	private int hautt;
+	private boolean bool = false;
+	private Fenetre j;
+	public NewPanMeuble(Fenetre m){
+		this.j=m;
 		this.setLayout(new GridBagLayout());
-		String[] chaines = new String[]{"Nom  :","Longueur (en cm) :","Largeur (en cm) :","Hauteur (en cm) :","Demontable :","Elements :","Longueur + (en cm) :","Largeur + (en cm) :","Hauteur + (en cm) :","Image :"};
-		JLabel[] chaine = new JLabel[10];
+		String[] chaines = new String[]{"Nom  :","Longueur (en cm) :","Largeur (en cm) :","Hauteur (en cm) :","Demontable :","Elements :","Longueur + (en cm) :","Largeur + (en cm) :","Hauteur + (en cm) :"};
+		JLabel[] chaine = new JLabel[9];
 		this.slide = new Slide[7];
 		for(int i= 0;i<3;i++)slide[i]=new Slide(10,500,10);
 		for(int i= 4;i<7;i++)slide[i]=new Slide(10,500,10);
-		slide[3] = new Slide(0,10,0);
-		for(int i=0;i<10;i++)chaine[i] = new JLabel(chaines[i]);
-		for(int i=0;i<10;i++)chaine[i].setFont(new Font("Arial",Font.PLAIN,25));
+		slide[3] = new Slide(1,10,1);
+		for(int i=0;i<9;i++)chaine[i] = new JLabel(chaines[i]);
+		for(int i=0;i<9;i++)chaine[i].setFont(new Font("Arial",Font.PLAIN,25));
 		GridBagConstraints c = new GridBagConstraints();
-		for(int i=0;i<10;i++){
+		for(int i=0;i<9;i++){
 			c.gridx = 0;
 			c.gridy = i;
 			c.gridheight = 1;
@@ -28,6 +39,14 @@ public class NewPanMeuble extends JPanel{
 			c.ipady = 10;
 			this.add(chaine[i],c);
 		}
+		this.field = new JTextField(20);
+		c.gridx = 1;
+		c.gridy = 0;
+		c.gridheight = 1;
+		c.gridwidth = 1;
+		c.ipadx =10;
+		c.ipady = 10;
+		this.add(this.field,c);
 		c.gridx = 1;
 		c.gridy = 1;
 		c.gridheight = 1;
@@ -135,13 +154,30 @@ public class NewPanMeuble extends JPanel{
 		this.pan[6].add(this.slide[6]);
 		this.pan[6].add(this.lab[6][2]);
 		////////////////////////////////////////
-		
+
+		this.longu = this.slide[0].getValue();
+		this.larg = this.slide[1].getValue();
+		this.haut = this.slide[2].getValue();
+		this.elt = this.slide[3].getValue();
+		this.longg = this.slide[4].getValue();
+		this.largg = this.slide[5].getValue();
+		this.hautt = this.slide[6].getValue();
+		c.gridx = 1;
+		c.gridy = 9;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = 0.2f;
+		c.weighty = 0.2f;
+		JButton bouton = new JButton("Ajouter le meuble");
+		bouton.addActionListener(new Action(this,this.field));
+		this.add(bouton,c);
 		for(int i=0;i<7;i++)this.slide[i].addChangeListener(new Change(this));
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 	}
 	public void demont(){
 		for(int i=3;i<7;i++)this.remove(this.pan[i]);
 		this.revalidate();
+		this.bool = false;
 	}
 	public void unmount(){
 		GridBagConstraints c = new GridBagConstraints();
@@ -178,6 +214,22 @@ public class NewPanMeuble extends JPanel{
 		
 		this.add(this.pan[6],c);
 		this.revalidate();
+		this.bool=true;
+	}
+	public void ecrit(String nom){
+		Meuble x = new Meuble();
+		x.setNom(this.field.getText());
+		x.setLong(this.slide[1].getValue());
+		x.setLarg(this.slide[1].getValue());
+		x.setHaut(this.slide[2].getValue());
+		x.setDemont(this.bool);
+		x.setElt(this.slide[3].getValue());
+		x.setLongg(this.slide[4].getValue());
+		x.setLargg(this.slide[5].getValue());
+		x.setHautt(this.slide[6].getValue());
+		Model v = new Model();
+		v.Ecriture(x);
+		this.j.next();
 	}
 	public void change(){
 		for(int i = 0;i<7;i++){
@@ -188,5 +240,12 @@ public class NewPanMeuble extends JPanel{
 				}
 			}	
 		}
+		this.longu = this.slide[0].getValue();
+		this.larg = this.slide[1].getValue();
+		this.haut = this.slide[2].getValue();
+		this.elt = this.slide[3].getValue();
+		this.longg = this.slide[4].getValue();
+		this.largg = this.slide[5].getValue();
+		this.hautt = this.slide[6].getValue();
 	}
 }

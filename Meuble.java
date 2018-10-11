@@ -11,13 +11,9 @@ public class Meuble {
 	private int longg;
 	private int largg;
 	private int hautt;
-	private ImageIcon image;
 	private boolean demont;
 	public void setNom(String a){
 		this.nom = a;
-	}
-	public void setImg(String a){
-		this.image = new ImageIcon(a);
 	}
 	public void setLong(int a){
 		this.longueur = a;
@@ -45,9 +41,6 @@ public class Meuble {
 	}
 	public String getNom(){
 		return this.nom;
-	}
-	public ImageIcon getImg(){
-		return this.image;
 	}
 	public boolean getDemont(){
 		return this.demont;

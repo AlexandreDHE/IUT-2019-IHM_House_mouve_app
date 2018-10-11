@@ -25,9 +25,11 @@ public class Fenetre extends JFrame{
 		this.add(pan);
 	}
 	public void next(){
+		this.inv.actu();
 		this.card.next(this.pan);
 	}
 	public void previous(){
+		this.inv.actu();
 		this.card.previous(this.pan);
 	}
 }

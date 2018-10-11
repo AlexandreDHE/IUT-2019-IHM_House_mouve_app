@@ -3,7 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class NewMeuble extends JPanel{
+	public Fenetre y;
 	public NewMeuble(Fenetre b){
+		this.y=b;
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
@@ -41,14 +43,10 @@ public class NewMeuble extends JPanel{
 		c.weightx = 1.0f;
 		c.weighty = 1.0f;
 		c.fill = GridBagConstraints.BOTH;
-		this.add(new NewPanMeuble(),c);
-		c.gridx = 1;
-		c.gridy = 2;
-		c.gridheight = 1;
-		c.gridwidth = 1;
-		c.weightx = 1.0f;
-		c.weighty = 1.0f;
-		c.fill = GridBagConstraints.BOTH;
-		this.add(new JPanel(),c);
+		NewPanMeuble bb = new NewPanMeuble(b);
+		this.add(bb,c);
+	}
+	public void retour(){
+		this.y.next();
 	}
 }

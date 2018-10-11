@@ -13,6 +13,7 @@ public class Inventaire extends JPanel{
 	private Fenetre r;
 	public Inventaire(Fenetre v){
 		super();
+		this.revalidate();
 		this.r = v;
 		this.setLayout(new GridBagLayout());
 		this.plus.addActionListener(new Action(this));
@@ -135,7 +136,11 @@ public class Inventaire extends JPanel{
 		this.curseur--;
 	}
 	public void actu(){
+		this.y.repaint();
+		System.out.println(""+this.meub.length);
 		this.meub = this.y.getMeuble();
+		System.out.println(""+this.meub.length);
+		this.y.repaint();
 	}
 	public void ajout(){
 		this.r.next();
