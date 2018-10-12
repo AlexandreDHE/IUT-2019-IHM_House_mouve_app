@@ -10,6 +10,7 @@ public class CarreRond extends JComponent{
 	public CarreRond(Menu a){
 		this.c = a;
 	}
+	public CarreRond(){}
 	public void paintComponent(Graphics pinceau){
 		Graphics secondPinceau = pinceau.create();
 		if (this.isOpaque()) {
@@ -37,6 +38,11 @@ public class CarreRond extends JComponent{
 		this.i=a;
 		this.repaint();
 	}
+	public CarreRond getChange(int a){
+		CarreRond v = new CarreRond();
+		v.change(a);
+		return v;
+	}
 	public void surbrillance(){
 		this.cont = 1;
 		this.repaint();
@@ -47,5 +53,8 @@ public class CarreRond extends JComponent{
 	}
 	public void inventaire(){
 		this.c.inventaire();
+	}
+	public void carton(){
+		this.c.carton();
 	}
 }

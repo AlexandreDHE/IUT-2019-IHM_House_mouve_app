@@ -27,8 +27,11 @@ public class Movve implements MouseListener{
 		}
 	}
 	public void mouseClicked(MouseEvent e){
-		if(e.getComponent().equals(this.j)){
+		CarreRond test = new CarreRond();
+		if(e.getComponent().equals(test.getChange(0))){
 			this.j.inventaire();
+		}else if(e.getComponent().equals(test.getChange(1))){
+			this.j.carton();
 		}
 	}
 	public void mousePressed(MouseEvent e){}         

@@ -40,4 +40,7 @@ public class Menu extends JPanel{
 	public void inventaire(){
 		this.b.next();
 	}
+	public void carton(){
+		this.b.carton();
+	}
 }

@@ -6,7 +6,8 @@ public class Fenetre extends JFrame{
 	private Img retour;
 	private Menu men;
 	private Inventaire inv;
-	private CardLayout card; 
+	private CardLayout card;
+	private Cartons b;
 	private JPanel pan;
 	private NewMeuble bn;
 	public Fenetre(){
@@ -14,6 +15,7 @@ public class Fenetre extends JFrame{
 		this.setSize(1024,942);
 		this.card = new CardLayout();
 		this.pan = new JPanel();
+		this.b = new Cartons(this);
 		this.pan.setLayout(this.card);
 		this.men = new Menu(this);
 		this.inv = new Inventaire(this);
@@ -22,6 +24,7 @@ public class Fenetre extends JFrame{
 		this.pan.add(this.men,"1");
 		this.pan.add(this.inv,"2");
 		this.pan.add(this.bn,"3");
+		this.pan.add(this.b,"4");
 		this.add(pan);
 	}
 	public void next(){
@@ -31,5 +34,8 @@ public class Fenetre extends JFrame{
 	public void previous(){
 		this.inv.actu();
 		this.card.previous(this.pan);
+	}
+	public void carton(){
+		this.card.show(this.pan,"4");
 	}
 }
