@@ -45,6 +45,16 @@ public class NewMeuble extends JPanel{
 		c.fill = GridBagConstraints.BOTH;
 		NewPanMeuble bb = new NewPanMeuble(b);
 		this.add(bb,c);
+		c.gridx = 1;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = 0.2f;
+		c.weighty = 0.2f;
+		c.fill = GridBagConstraints.NONE;
+		JButton bouton = new JButton("Ajouter le meuble");
+		bouton.addActionListener(new Action(bb,bb.getTextField()));
+		this.add(bouton,c);
 	}
 	public void retour(){
 		this.y.next();

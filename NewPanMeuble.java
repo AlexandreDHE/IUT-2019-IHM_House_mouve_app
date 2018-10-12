@@ -162,22 +162,19 @@ public class NewPanMeuble extends JPanel{
 		this.longg = this.slide[4].getValue();
 		this.largg = this.slide[5].getValue();
 		this.hautt = this.slide[6].getValue();
-		c.gridx = 1;
-		c.gridy = 9;
-		c.gridwidth = 1;
-		c.gridheight = 1;
-		c.weightx = 0.2f;
-		c.weighty = 0.2f;
-		JButton bouton = new JButton("Ajouter le meuble");
-		bouton.addActionListener(new Action(this,this.field));
-		this.add(bouton,c);
-		for(int i=0;i<7;i++)this.slide[i].addChangeListener(new Change(this));
+		
+
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+		
+		for(int i=0;i<7;i++)this.slide[i].addChangeListener(new Change(this));
 	}
 	public void demont(){
 		for(int i=3;i<7;i++)this.remove(this.pan[i]);
 		this.revalidate();
 		this.bool = false;
+	}
+	public JTextField getTextField(){
+		return this.field;
 	}
 	public void unmount(){
 		GridBagConstraints c = new GridBagConstraints();
@@ -229,7 +226,7 @@ public class NewPanMeuble extends JPanel{
 		x.setHautt(this.slide[6].getValue());
 		Model v = new Model();
 		v.Ecriture(x);
-		this.j.next();
+		this.j.previous();
 	}
 	public void change(){
 		for(int i = 0;i<7;i++){

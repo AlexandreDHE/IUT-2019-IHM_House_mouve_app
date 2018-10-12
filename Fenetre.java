@@ -38,4 +38,10 @@ public class Fenetre extends JFrame{
 	public void carton(){
 		this.card.show(this.pan,"4");
 	}
+	public void menu(){
+		this.card.show(this.pan,"1");
+	}
+	public void inventaire(){
+		this.card.show(this.pan,"2");
+	}
 }

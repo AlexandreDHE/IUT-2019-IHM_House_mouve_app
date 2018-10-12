@@ -51,9 +51,9 @@ public class Model extends JComponent{
 		}
 		secondPinceau.setFont(new Font("Arial",Font.PLAIN,30));
 		if(this.nbmb!=0){
-			secondPinceau.drawString(this.v+"/"+this.nbmb+" Meubles",this.getWidth()/2,this.getHeight()/2);
+			secondPinceau.drawString(this.v+"/"+this.nbmb+" Meubles",(this.getWidth()/2)-70,this.getHeight()/2);
 		}else{
-			secondPinceau.drawString(this.v+"/"+this.nbmb+" Meuble",this.getWidth()/2,this.getHeight()/2);
+			secondPinceau.drawString(this.v+"/"+this.nbmb+" Meuble",(this.getWidth()/2)-70,this.getHeight()/2);
 		}
 	}
 	public void Lecture(){
@@ -136,12 +136,32 @@ public class Model extends JComponent{
 			statement.setInt(7,a.getLongg());
 			statement.setInt(8,a.getLargg());
 			statement.setInt(9,a.getHautt());
-			statement.setInt(9,a.getHautt());
 			statement.executeQuery();
 		}catch(SQLException e){
 			System.err.println("Erreur d'ajout");
 			System.exit(1);
 		}
+	}
+	public ObCarton getCarton(String a){
+		ObCarton cart = new ObCarton();
+		try{
+			PreparedStatement statement = this.connec.prepareStatement("SELECT * FROM Carton WHERE chambre=?;");
+			statement.setString(1,a);
+			ResultSet res = statement.executeQuery();
+			if(res.first()){
+				cart.setNom(res.getString(1));
+				cart.setPetit(res.getInt(2));
+				cart.setMoyen(res.getInt(3));
+				cart.setBarrel(res.getInt(4));
+				cart.setPenderie(res.getInt(5));
+				cart.setTableau(res.getInt(6));
+			}
+			res.close();
+		}catch(SQLException e){
+			System.err.println("Erreur de lecture");
+			System.exit(1);
+		}
+		return cart;
 	}
 	public void actu(){
 		this.a.actu();

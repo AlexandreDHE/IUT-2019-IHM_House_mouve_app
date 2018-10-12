@@ -9,7 +9,7 @@ public class Menu extends JPanel{
 		super();
 		this.b=a;
 		GridLayout grid = new GridLayout(5,1);
-		grid.setVgap(40);
+		grid.setVgap(75);
 		this.setLayout(grid);
 		JPanel pan = new JPanel();
 		pan.setLayout(new GridLayout(1,3));
@@ -29,7 +29,7 @@ public class Menu extends JPanel{
 		CarreRond dev = new CarreRond(this);
 		dev.change(3);
 		inventaire.addMouseListener(new Movve(inventaire));
-		cartons.addMouseListener(new Movve(cartons));
+		cartons.addMouseListener(new Movvve(this,cartons));
 		devis.addMouseListener(new Movve(devis));
 		dev.addMouseListener(new Movve(dev));
 		this.add(inventaire);

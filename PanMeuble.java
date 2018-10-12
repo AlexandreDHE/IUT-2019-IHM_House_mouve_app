@@ -27,13 +27,6 @@ public class PanMeuble extends JPanel{
 		GridBagConstraints c = new GridBagConstraints();
 		for(int i=0;i<9;i++){
 			if(i==5 && !meuble.getDemont()){
-				c.gridx = 0;
-				c.gridy = i;
-				c.gridheight = 1;
-				c.gridwidth = 1;
-				c.ipadx =10;
-				c.ipady = 10;
-				this.add(chaine[8],c);
 				break;
 			}
 			c.gridx = 0;
@@ -46,13 +39,6 @@ public class PanMeuble extends JPanel{
 		}
 		for(int i=0;i<9;i++){
 			if(i==5 && !meuble.getDemont()){
-				c.gridx = 1;
-				c.gridy = i;
-				c.gridheight = 1;
-				c.gridwidth = 1;
-				c.ipadx =10;
-				c.ipady = 10;
-				this.add(lab[8],c);
 				break;
 			}
 			c.gridx = 1;

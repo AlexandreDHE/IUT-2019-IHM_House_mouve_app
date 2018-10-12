@@ -2,18 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Move implements MouseListener{
-	private Inventaire i;
+public class Movvve implements MouseListener{
+	private Menu i;
 	private Fenetre b;
-	public Move(Fenetre a){
-		this.b=a;
-	}     
+	private CarreRond y;
+	public Movvve(Menu a,CarreRond c){
+		this.i=a;
+		this.y=c;
+	}   
 	public void mouseEntered(MouseEvent e){
+		this.y.surbrillance();
 	}
 	public void mouseExited(MouseEvent e){
+		this.y.desurbrillance();
 	}
 	public void mouseClicked(MouseEvent e){
-		this.b.menu();
+		this.i.carton();
 	}
 	public void mousePressed(MouseEvent e){}         
 	public void mouseReleased(MouseEvent e){}  

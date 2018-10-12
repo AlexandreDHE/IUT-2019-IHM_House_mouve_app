@@ -38,7 +38,6 @@ public class Inventaire extends JPanel{
 		c.weightx = 1.0f;
 		c.weighty = 1.0f;
 		Img inve = new Img("inventair.png");
-		inve.setHorizontalAlignment(JLabel.RIGHT);
 		this.add(inve,c);
 		c.gridx = 2;
 		c.gridy = 0;
