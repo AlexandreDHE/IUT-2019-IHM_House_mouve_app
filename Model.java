@@ -124,22 +124,108 @@ public class Model extends JComponent{
 		this.Lecture();
 		this.repaint();
 	}
-	public void Ecriture(Meuble a){
+	public boolean changeValCarton(String u,AllCarton t,int curseur,int valeur){
+		String x=null;
+		if(curseur==0){
+			x="petit";
+		}else if(curseur==1){
+			x="moyen";
+		}else if(curseur==2){
+			x="barrel";
+		}else if(curseur==3){
+			x="penderie";
+		}else if(curseur==4){
+			x="tableau";
+		}
+		if(valeur>=0 && valeur<=20){
+			try{
+				PreparedStatement statement = this.connec.prepareStatement("UPDATE `Carton` SET "+x+"=? WHERE `chambre`=?");
+				statement.setInt(1,valeur);
+				statement.setString(2,u);
+				statement.executeUpdate();
+				return true;
+			}catch(SQLException e){
+				JOptionPane.showMessageDialog(t, "Inserer une valeur valide");
+			}
+		}else{
+			JOptionPane.showMessageDialog(t, "Inserer une valeur comprise entre 0 et 20");
+		}
+		return false;
+	}
+	public String[] getRooms(){
+		int x=0;
+		String[] room = null;
 		try{
-			PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`, `elt`, `longu`, `large`, `hautt`) VALUES (?,?,?,?,?,?,?,?,?)");
+			PreparedStatement statement = this.connec.prepareStatement("SELECT chambre FROM Carton;");
+			ResultSet res = statement.executeQuery();
+			if(res.first()){
+				x++;
+				while(res.next()){
+					x++;
+				}
+				res.first();
+				room = new String[x];
+				for(int i=0;i<x;i++){
+					room[i] = res.getString(1);
+					res.next();
+				}
+			}
+			res.close();
+		}catch(SQLException e){
+			System.err.println("Erreur de lecture");
+			System.exit(1);
+		}
+		return room;
+	}
+	public void Ecriture(NewPanMeuble j,Meuble a){
+		if(!a.getDemont()){
+			try{
+				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`, `elt`, `longu`, `large`, `hautt`) VALUES (?,?,?,?,?,?,?,?,?)");
+				statement.setString(1,a.getNom());
+				statement.setInt(2,a.getLong());
+				statement.setInt(3,a.getLarg());
+				statement.setInt(4,a.getHaut());
+				statement.setBoolean(5,a.getDemont());
+				statement.setInt(6,a.getElt());
+				statement.setInt(7,a.getLongg());
+				statement.setInt(8,a.getLargg());
+				statement.setInt(9,a.getHautt());
+				statement.executeQuery();
+			}catch(SQLException e){
+				JOptionPane.showMessageDialog(j, "Ce meuble existe deja");
+			}
+		}else{
+			try{
+				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`) VALUES (?,?,?,?,?");
+				statement.setString(1,a.getNom());
+				statement.setInt(2,a.getLong());
+				statement.setInt(3,a.getLarg());
+				statement.setInt(4,a.getHaut());
+				statement.setBoolean(5,a.getDemont());
+				statement.executeQuery();
+			}catch(SQLException e){
+				JOptionPane.showMessageDialog(j, "Ce meuble existe deja");
+			}
+		}
+	}
+	public void Ecriture(NewNewCarton j,ObCarton a){
+		try{
+			PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Carton`(`chambre`, `petit`, `moyen`, `barrel`, `penderie`, `tableau`) VALUES (?,?,?,?,?,?)");
+			System.out.println(a.getNom());
+			System.out.println(a.getPetit());
+			System.out.println(a.getMoyen());
+			System.out.println(a.getBarrel());
+			System.out.println(a.getPenderie());
+			System.out.println(a.getTableau());
 			statement.setString(1,a.getNom());
-			statement.setInt(2,a.getLong());
-			statement.setInt(3,a.getLarg());
-			statement.setInt(4,a.getHaut());
-			statement.setBoolean(5,a.getDemont());
-			statement.setInt(6,a.getElt());
-			statement.setInt(7,a.getLongg());
-			statement.setInt(8,a.getLargg());
-			statement.setInt(9,a.getHautt());
+			statement.setInt(2,a.getPetit());
+			statement.setInt(3,a.getMoyen());
+			statement.setInt(4,a.getBarrel());
+			statement.setInt(5,a.getPenderie());
+			statement.setInt(6,a.getTableau());
 			statement.executeQuery();
 		}catch(SQLException e){
-			System.err.println("Erreur d'ajout");
-			System.exit(1);
+			JOptionPane.showMessageDialog(j, "Cette chambre existe deja");			
 		}
 	}
 	public ObCarton getCarton(String a){

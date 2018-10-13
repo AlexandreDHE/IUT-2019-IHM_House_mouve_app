@@ -26,7 +26,7 @@ public class Inventaire extends JPanel{
 		c.weightx = 1.0f;
 		c.weighty = 1.0f;
 		c.fill=GridBagConstraints.BOTH;
-		Img ret = new Img("<.png",this);
+		Img ret = new Img("ret1.png",this);
 		ret.addMouseListener(new Movve(ret));
 		ret.addMouseListener(new Mouse(v));
 		ret.setHorizontalAlignment(JLabel.LEFT);
@@ -136,9 +136,7 @@ public class Inventaire extends JPanel{
 	}
 	public void actu(){
 		this.y.repaint();
-		System.out.println(""+this.meub.length);
 		this.meub = this.y.getMeuble();
-		System.out.println(""+this.meub.length);
 		this.y.repaint();
 	}
 	public void ajout(){

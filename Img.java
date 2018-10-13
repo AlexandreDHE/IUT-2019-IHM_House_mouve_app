@@ -14,11 +14,11 @@ public class Img extends JLabel{
 		this.setPreferredSize(new Dimension(20,20));
 	}
 	public void retour(){
-		this.setIcon(new ImageIcon("<1.png"));
+		this.setIcon(new ImageIcon("ret2.png"));
 		this.repaint();
 	}
 	public void nretour(){
-		this.setIcon(new ImageIcon("<.png"));
+		this.setIcon(new ImageIcon("ret1.png"));
 		this.repaint();
 	}
 	public void menu(){
