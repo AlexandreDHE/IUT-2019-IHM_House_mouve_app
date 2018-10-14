@@ -15,6 +15,7 @@ public class Fenetre extends JFrame{
 	public Fenetre(){
 		super();
 		this.setSize(1024,942);
+		this.setResizable(false);
 		this.card = new CardLayout();
 		this.pan = new JPanel();
 		this.b = new Cartons(this);

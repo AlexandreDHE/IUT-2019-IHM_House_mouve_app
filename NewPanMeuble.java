@@ -9,6 +9,7 @@ public class NewPanMeuble extends JPanel{
 	private Labb[][] lab;
 	private JPanel[] pan;
 	private JTextField field;
+	private JTextField field1;
 	private int longu;
 	private int larg;
 	private int haut;
@@ -22,16 +23,16 @@ public class NewPanMeuble extends JPanel{
 		this.j=m;
 		this.setLayout(new GridBagLayout());
 		this.setBackground(new Color(185, 172, 136));
-		String[] chaines = new String[]{"Nom  :","Longueur (en cm) :","Largeur (en cm) :","Hauteur (en cm) :","Demontable :","Elements :","Longueur + (en cm) :","Largeur + (en cm) :","Hauteur + (en cm) :"};
-		JLabel[] chaine = new JLabel[9];
+		String[] chaines = new String[]{"Nom  :","Description :","Longueur (en cm) :","Largeur (en cm) :","Hauteur (en cm) :","Demontable :","Elements :","Longueur + (en cm) :","Largeur + (en cm) :","Hauteur + (en cm) :"};
+		JLabel[] chaine = new JLabel[10];
 		this.slide = new Slide[7];
 		for(int i= 0;i<3;i++)slide[i]=new Slide(10,500,10);
 		for(int i= 4;i<7;i++)slide[i]=new Slide(10,500,10);
 		slide[3] = new Slide(1,10,1);
-		for(int i=0;i<9;i++)chaine[i] = new JLabel(chaines[i]);
-		for(int i=0;i<9;i++)chaine[i].setFont(new Font("Arial",Font.PLAIN,25));
+		for(int i=0;i<10;i++)chaine[i] = new JLabel(chaines[i]);
+		for(int i=0;i<10;i++)chaine[i].setFont(new Font("Arial",Font.PLAIN,25));
 		GridBagConstraints c = new GridBagConstraints();
-		for(int i=0;i<9;i++){
+		for(int i=0;i<10;i++){
 			c.gridx = 0;
 			c.gridy = i;
 			c.gridheight = 1;
@@ -54,6 +55,8 @@ public class NewPanMeuble extends JPanel{
 		c.gridwidth = 1;
 		c.ipadx =10;
 		c.ipady = 10;
+		this.field1 = new JTextField(50);
+		this.add(this.field1,c);
 		this.pan = new JPanel[7];
 		this.lab = new Labb[7][3];
 		for(int i = 0;i<7;i++){
@@ -69,7 +72,7 @@ public class NewPanMeuble extends JPanel{
 		}
 		JCheckBox box = new JCheckBox();
 		c.gridx = 1;
-		c.gridy = 4;
+		c.gridy = 5;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -77,7 +80,7 @@ public class NewPanMeuble extends JPanel{
 		box.addItemListener(new JCheck(this));
 		this.add(box,c);
 		c.gridx = 1;
-		c.gridy = 1;
+		c.gridy = 2;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -92,7 +95,7 @@ public class NewPanMeuble extends JPanel{
 		this.pan[0].add(this.lab[0][2]);
 		this.add(this.pan[0],c);
 		c.gridx = 1;
-		c.gridy = 2;
+		c.gridy = 3;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -108,7 +111,7 @@ public class NewPanMeuble extends JPanel{
 		this.pan[1].add(this.lab[1][2]);
 		this.add(this.pan[1],c);
 		c.gridx = 1;
-		c.gridy = 3;
+		c.gridy = 4;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -181,7 +184,7 @@ public class NewPanMeuble extends JPanel{
 	public void unmount(){
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 1;
-		c.gridy = 5;
+		c.gridy = 6;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -189,7 +192,7 @@ public class NewPanMeuble extends JPanel{
 		
 		this.add(this.pan[3],c);
 		c.gridx = 1;
-		c.gridy = 6;
+		c.gridy = 7;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -197,7 +200,7 @@ public class NewPanMeuble extends JPanel{
 		
 		this.add(this.pan[4],c);
 		c.gridx = 1;
-		c.gridy = 7;
+		c.gridy = 8;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -205,7 +208,7 @@ public class NewPanMeuble extends JPanel{
 		
 		this.add(this.pan[5],c);
 		c.gridx = 1;
-		c.gridy = 8;
+		c.gridy = 9;
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.ipadx =10;
@@ -218,6 +221,7 @@ public class NewPanMeuble extends JPanel{
 	public void ecrit(){
 		Meuble x = new Meuble();
 		x.setNom(this.field.getText());
+		x.setDesc(this.field1.getText());
 		x.setLong(this.slide[0].getValue());
 		x.setLarg(this.slide[1].getValue());
 		x.setHaut(this.slide[2].getValue());

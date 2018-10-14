@@ -71,14 +71,15 @@ public class Model extends JComponent{
 				for(int i=0;i<this.nbmb;i++){
 					this.mb[i] = new Meuble();
 					this.mb[i].setNom(res.getString(1));
-					this.mb[i].setLong(res.getInt(2));
-					this.mb[i].setLarg(res.getInt(3));
-					this.mb[i].setHaut(res.getInt(4));
-					this.mb[i].setDemont(res.getBoolean(5));
-					this.mb[i].setElt(res.getInt(6));
-					this.mb[i].setLongg(res.getInt(7));
-					this.mb[i].setLargg(res.getInt(8));
-					this.mb[i].setHautt(res.getInt(9));
+					this.mb[i].setDesc(res.getString(2));
+					this.mb[i].setLong(res.getInt(3));
+					this.mb[i].setLarg(res.getInt(4));
+					this.mb[i].setHaut(res.getInt(5));
+					this.mb[i].setDemont(res.getBoolean(6));
+					this.mb[i].setElt(res.getInt(7));
+					this.mb[i].setLongg(res.getInt(8));
+					this.mb[i].setLargg(res.getInt(9));
+					this.mb[i].setHautt(res.getInt(10));
 					res.next();
 				}
 			}
@@ -180,28 +181,30 @@ public class Model extends JComponent{
 	public void Ecriture(NewPanMeuble j,Meuble a){
 		if(a.getDemont()){
 			try{
-				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`, `elt`, `longu`, `large`, `hautt`) VALUES (?,?,?,?,?,?,?,?,?);");
+				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`,`description`, `longueur`, `larg`, `haut`, `demontable`, `elt`, `longu`, `large`, `hautt`) VALUES (?,?,?,?,?,?,?,?,?,?);");
 				statement.setString(1,a.getNom());
-				statement.setInt(2,a.getLong());
-				statement.setInt(3,a.getLarg());
-				statement.setInt(4,a.getHaut());
-				statement.setBoolean(5,a.getDemont());
-				statement.setInt(6,a.getElt());
-				statement.setInt(7,a.getLongg());
-				statement.setInt(8,a.getLargg());
-				statement.setInt(9,a.getHautt());
+				statement.setString(2,a.getDesc());
+				statement.setInt(3,a.getLong());
+				statement.setInt(4,a.getLarg());
+				statement.setInt(5,a.getHaut());
+				statement.setBoolean(6,a.getDemont());
+				statement.setInt(7,a.getElt());
+				statement.setInt(8,a.getLongg());
+				statement.setInt(9,a.getLargg());
+				statement.setInt(10,a.getHautt());
 				statement.executeQuery();
 			}catch(SQLException e){
 				JOptionPane.showMessageDialog(j, "Ce meuble existe deja");
 			}
 		}else{
 			try{
-				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`) VALUES (?,?,?,?,?)");
+				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `description`, `longueur`, `larg`, `haut`, `demontable`) VALUES (?,?,?,?,?,?);");
 				statement.setString(1,a.getNom());
-				statement.setInt(2,a.getLong());
-				statement.setInt(3,a.getLarg());
-				statement.setInt(4,a.getHaut());
-				statement.setBoolean(5,a.getDemont());
+				statement.setString(2,a.getDesc());
+				statement.setInt(3,a.getLong());
+				statement.setInt(4,a.getLarg());
+				statement.setInt(5,a.getHaut());
+				statement.setBoolean(6,a.getDemont());
 				statement.executeQuery();
 			}catch(SQLException e){
 				JOptionPane.showMessageDialog(j, "Ce meuble existe deja");

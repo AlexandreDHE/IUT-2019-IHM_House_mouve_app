@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 public class Meuble {
 	private String nom;
+	private String desc;
 	private int longueur;
 	private int largeur;
 	private int hauteur;
@@ -14,6 +15,9 @@ public class Meuble {
 	private boolean demont;
 	public void setNom(String a){
 		this.nom = a;
+	}
+	public void setDesc(String a){
+		this.desc = a;
 	}
 	public void setLong(int a){
 		this.longueur = a;
@@ -41,6 +45,9 @@ public class Meuble {
 	}
 	public String getNom(){
 		return this.nom;
+	}
+	public String getDesc(){
+		return this.desc;
 	}
 	public boolean getDemont(){
 		return this.demont;

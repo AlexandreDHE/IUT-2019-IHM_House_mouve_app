@@ -6,7 +6,7 @@ public class AllCarton extends JPanel{
 	private JTextField[] field;
 	private ObCarton c;
 	private JLabel[] m;
-	public AllCarton(String room){
+	public AllCarton(Fenetre m,String room){
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints cc = new GridBagConstraints();
 		this.field = new JTextField[5];
@@ -36,7 +36,11 @@ public class AllCarton extends JPanel{
 			lab.setHorizontalAlignment(JLabel.CENTER);
 			lab.setVerticalAlignment(JLabel.CENTER);
 			lab.setFont(new Font("Arial",Font.PLAIN,25));
-			lab.setBorder(BorderFactory.createMatteBorder(3, 0, 0, 3, Color.BLACK));
+			if(i==5){
+				lab.setBorder(BorderFactory.createMatteBorder(3, 0,3, 3, Color.BLACK));
+			}else{
+				lab.setBorder(BorderFactory.createMatteBorder(3, 0, 0, 3, Color.BLACK));
+			}
 			this.add(lab,cc);
 		}
 		cc.gridx = 1;
@@ -56,6 +60,14 @@ public class AllCarton extends JPanel{
 			pan[j].add(this.field[j]);
 			this.add(pan[j],cc);
 		}
+		cc.gridy=6;
+		cc.fill = GridBagConstraints.BOTH;
+		JPanel panneau = new JPanel();
+		JButton supp = new JButton("Supprimer ce Carton");
+		supp.addActionListener(new Action(m,room));
+		panneau.add(supp,BorderLayout.CENTER);
+		panneau.setBorder(BorderFactory.createMatteBorder(3, 3, 0, 0, Color.BLACK));
+		this.add(panneau,cc);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
 	}
 	public int retValue(int cur){

@@ -57,7 +57,7 @@ public class Cartons extends JPanel{
 		c.gridx = 1;
 		c.gridy = 2;
 		for(int j=0;j<choix.length;j++){
-			AllCarton u = new AllCarton(choix[j]);
+			AllCarton u = new AllCarton(i,choix[j]);
 			this.pan.add(u,""+choix[j]);		
 		}
 		this.add(this.pan,c);
@@ -73,9 +73,6 @@ public class Cartons extends JPanel{
 		JButton add = new JButton("Ajouter un Carton");
 		add.addActionListener(new Action(i));
 		panu.add(add);
-		JButton supp = new JButton("Supprimer ce Carton");
-		supp.addActionListener(new Action(i,this.name));
-		panu.add(supp);
 		this.add(panu,c);
 		JButton[] boutons = new JButton[choix.length];
 		c.gridx = 0;
@@ -144,7 +141,7 @@ public class Cartons extends JPanel{
 		c.gridx = 1;
 		c.gridy = 2;
 		for(int j=0;j<choix.length;j++){
-			AllCarton u = new AllCarton(choix[j]);
+			AllCarton u = new AllCarton(i,choix[j]);
 			this.pan.add(u,""+choix[j]);		
 		}
 		this.add(this.pan,c);
@@ -160,9 +157,6 @@ public class Cartons extends JPanel{
 		JButton add = new JButton("Ajouter un Carton");
 		add.addActionListener(new Action(i));
 		panu.add(add);
-		JButton supp = new JButton("Supprimer ce Carton");
-		supp.addActionListener(new Action(i,this.name));
-		panu.add(supp);
 		this.add(panu,c);
 		JButton[] boutons = new JButton[choix.length];
 		c.gridx = 0;

@@ -11,6 +11,7 @@ public class Inventaire extends JPanel{
 	private PanMeuble pan;
 	private Model y;
 	private Fenetre r;
+	private JPanel pann;
 	public Inventaire(Fenetre v){
 		super();
 		this.revalidate();
@@ -95,17 +96,17 @@ public class Inventaire extends JPanel{
 		c.weightx = 1.0f;
 		c.weighty = 1.0f;
 		c.fill=GridBagConstraints.NONE;
-		JPanel pann = new JPanel();
-		pann.setLayout(new GridLayout(1,2));
+		this.pann = new JPanel();
+		this.pann.setLayout(new GridLayout(1,2));
 		JButton but = new JButton("Ajouter");
 		but.addActionListener(new Action(v));
-		pann.add(but);
+		this.pann.add(but);
 		JButton button = new JButton("Supprimer");
 		if(this.meub!=null){
 			button.addActionListener(new Action(v,this.meub[this.curseur]));
 		}
-		pann.add(button);
-		this.add(pann,c);
+		this.pann.add(button);
+		this.add(this.pann,c);
 	}
 	public void plus(){
 		if(this.curseur<this.meub.length-1){
@@ -115,6 +116,7 @@ public class Inventaire extends JPanel{
 	}
 	public void change(){
 		this.remove(this.pan);
+		this.remove(this.pann);
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 1;
 		c.gridy = 2;
@@ -125,6 +127,24 @@ public class Inventaire extends JPanel{
 		c.fill=GridBagConstraints.BOTH;
 		this.pan = new PanMeuble(this.meub[this.curseur]);
 		this.add(this.pan,c);
+		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = 1.0f;
+		c.weighty = 1.0f;
+		c.fill=GridBagConstraints.NONE;
+		JPanel pa = new JPanel();
+		pa.setLayout(new GridLayout(1,2));
+		JButton but = new JButton("Ajouter");
+		but.addActionListener(new Action(this.r));
+		pa.add(but);
+		JButton button = new JButton("Supprimer");
+		if(this.meub!=null){
+			button.addActionListener(new Action(this.r,this.meub[this.curseur]));
+		}
+		pa.add(button);
+		this.add(pa,c);
 		this.y.setVal(this.curseur+1);
 		this.revalidate();
 	}
