@@ -7,12 +7,14 @@ public class Cartons extends JPanel{
 	private JPanel pan;
 	private CardLayout cc;
 	private String[] choix;
+	private String name;
 	public Cartons(String[] rooms,Fenetre i){
 		super();
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		this.choix =rooms;
 		this.cc = new CardLayout();
+		this.name = this.choix[0];
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridwidth = 1;
@@ -66,9 +68,15 @@ public class Cartons extends JPanel{
 		c.weightx = 0.0f;
 		c.weighty = 1.0f;
 		c.fill=GridBagConstraints.NONE;
+		JPanel panu = new JPanel();
+		panu.setLayout(new GridLayout(1,2));
 		JButton add = new JButton("Ajouter un Carton");
 		add.addActionListener(new Action(i));
-		this.add(add,c);
+		panu.add(add);
+		JButton supp = new JButton("Supprimer ce Carton");
+		supp.addActionListener(new Action(i,this.name));
+		panu.add(supp);
+		this.add(panu,c);
 		JButton[] boutons = new JButton[choix.length];
 		c.gridx = 0;
 		c.gridy = 4;
@@ -92,6 +100,7 @@ public class Cartons extends JPanel{
 		GridBagConstraints c = new GridBagConstraints();
 		Model yu = new Model();
 		this.choix =yu.getRooms();
+		this.name = this.choix[0];
 		this.cc = new CardLayout();
 		c.gridx = 0;
 		c.gridy = 0;
@@ -146,9 +155,15 @@ public class Cartons extends JPanel{
 		c.weightx = 0.0f;
 		c.weighty = 1.0f;
 		c.fill=GridBagConstraints.NONE;
+		JPanel panu = new JPanel();
+		panu.setLayout(new GridLayout(1,2));
 		JButton add = new JButton("Ajouter un Carton");
 		add.addActionListener(new Action(i));
-		this.add(add,c);
+		panu.add(add);
+		JButton supp = new JButton("Supprimer ce Carton");
+		supp.addActionListener(new Action(i,this.name));
+		panu.add(supp);
+		this.add(panu,c);
 		JButton[] boutons = new JButton[choix.length];
 		c.gridx = 0;
 		c.gridy = 4;
@@ -167,10 +182,11 @@ public class Cartons extends JPanel{
 		this.add(yup,c);
 	}
 
-	public void setRooms(String[] name){
-		this.choix =name;
+	public void setRooms(String[] ame){
+		this.choix =ame;
 	}
-	public void showCarton(String name){
-		this.cc.show(this.pan,name);
+	public void showCarton(String ame){
+		this.name = ame;
+		this.cc.show(this.pan,this.name);
 	}
 }

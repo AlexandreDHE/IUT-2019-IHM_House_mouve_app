@@ -26,6 +26,7 @@ CLASS = \
 	Inventaire.java\
 	JCheck.java\
 	Labb.java\
+	Listen.java\
 	Menu.java\
 	Meuble.java\
 	Model.java\
@@ -43,6 +44,7 @@ CLASS = \
 	ObCarton.java\
 	PanMeuble.java\
 	Slide.java\
+	Surbrillance.java\
 
 default: class
 

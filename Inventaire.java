@@ -95,9 +95,17 @@ public class Inventaire extends JPanel{
 		c.weightx = 1.0f;
 		c.weighty = 1.0f;
 		c.fill=GridBagConstraints.NONE;
+		JPanel pann = new JPanel();
+		pann.setLayout(new GridLayout(1,2));
 		JButton but = new JButton("Ajouter");
-		but.addActionListener(new Action(this));
-		this.add(but,c);
+		but.addActionListener(new Action(v));
+		pann.add(but);
+		JButton button = new JButton("Supprimer");
+		if(this.meub!=null){
+			button.addActionListener(new Action(v,this.meub[this.curseur]));
+		}
+		pann.add(button);
+		this.add(pann,c);
 	}
 	public void plus(){
 		if(this.curseur<this.meub.length-1){
@@ -126,20 +134,5 @@ public class Inventaire extends JPanel{
 		}
 
 		this.change();
-	}
-	public void menu(){
-		this.r.previous();
-	}
-	public void supp(){
-		this.y.delete(this.meub[this.curseur]);
-		this.curseur--;
-	}
-	public void actu(){
-		this.y.repaint();
-		this.meub = this.y.getMeuble();
-		this.y.repaint();
-	}
-	public void ajout(){
-		this.r.next();
 	}
 }

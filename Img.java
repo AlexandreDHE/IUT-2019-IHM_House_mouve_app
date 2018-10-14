@@ -21,7 +21,4 @@ public class Img extends JLabel{
 		this.setIcon(new ImageIcon("ret1.png"));
 		this.repaint();
 	}
-	public void menu(){
-		this.b.menu();
-	}
 }

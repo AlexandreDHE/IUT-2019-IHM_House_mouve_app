@@ -21,6 +21,7 @@ public class NewNewCarton extends JPanel{
 	public NewNewCarton(Fenetre m){
 		this.j=m;
 		this.setLayout(new GridBagLayout());
+		this.setBackground(new Color(185, 172, 136));
 		String[] chaines = new String[]{"Chambre  :","<html>Petits<br>35x27x30cm</html>","<html>Moyens<br>55x35x30cm</html>","<html>Barrel<br>45x45x75cm</html>","<html>Penderie<br>120x50x50cm</html>","<html>Tableaux<br>100x15x90cm</html>"};
 		JLabel[] chaine = new JLabel[9];
 		this.slide = new Slide[5];
@@ -134,6 +135,7 @@ public class NewNewCarton extends JPanel{
 		this.pan[4].add(this.slide[4]);
 		this.pan[4].add(this.lab[4][2]);
 		this.add(this.pan[4],c);
+		for(int ui=0;ui<5;ui++)this.pan[ui].setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 		////////////////////////////////////////
 
 		this.longu = this.slide[0].getValue();

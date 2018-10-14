@@ -10,6 +10,7 @@ public class PanMeuble extends JPanel{
 		lab[1] = new JLabel(""+meuble.getLong());
 		lab[2] = new JLabel(""+meuble.getLarg());
 		lab[3] = new JLabel(""+meuble.getHaut());
+		this.setBackground(new Color(185, 172, 136));
 		if(meuble.getDemont()){
 			lab[4] = new JLabel("Oui");
 		}else{

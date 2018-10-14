@@ -11,6 +11,7 @@ public class AllCarton extends JPanel{
 		GridBagConstraints cc = new GridBagConstraints();
 		this.field = new JTextField[5];
 		Model x = new Model();
+		this.setBackground(new Color(185, 172, 136));
 		this.c = x.getCarton(room);
 		cc.gridx = 1;
 		cc.gridy = 0;

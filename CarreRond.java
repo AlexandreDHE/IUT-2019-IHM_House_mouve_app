@@ -17,21 +17,21 @@ public class CarreRond extends JComponent{
 		  secondPinceau.setColor(this.getBackground());
 		  secondPinceau.fillRect(0, 0, this.getWidth(), this.getHeight());
 		}
-		secondPinceau.fillRoundRect(150,0,this.getWidth()-270,this.getHeight()-10,10,10);
+		secondPinceau.fillRoundRect(0,0,this.getWidth(),this.getHeight(),10,10);
 		if(this.cont!=1){
-			secondPinceau.setColor(this.getBackground());
+			secondPinceau.setColor(new Color(205, 192, 156));
 		}else{
-			secondPinceau.setColor(new Color(220,220,220));
+			secondPinceau.setColor(new Color(245,206,102));
 		}
-		secondPinceau.fillRoundRect(160,10,this.getWidth()-290,this.getHeight()-30,10,10);
+		secondPinceau.fillRoundRect(10,10,this.getWidth()-20,this.getHeight()-20,10,10);
 		if(i==0){
-			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("inventaire.png"),2*this.getWidth()/5,this.getHeight()/5,this);
+			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("inventaire.png"),1*this.getWidth()/5,this.getHeight()/5,this);
 		}else if(i==1){
-			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("cartons.png"),2*this.getWidth()/5,this.getHeight()/5,this);
+			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("cartons.png"),1*this.getWidth()/5,this.getHeight()/5,this);
 		}else if(i==2){
-			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("modalite.png"),2*this.getWidth()/5,this.getHeight()/5,this);
+			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("modalite.png"),1*this.getWidth()/5,this.getHeight()/5,this);
 		}else if(i==3){
-			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("devis.png"),2*this.getWidth()/5,this.getHeight()/5,this);
+			secondPinceau.drawImage(Toolkit.getDefaultToolkit().getImage("devis.png"),1*this.getWidth()/5,this.getHeight()/5,this);
 		}
 	}
 	public void change(int a){

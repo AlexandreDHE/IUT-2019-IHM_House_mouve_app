@@ -21,6 +21,7 @@ public class NewPanMeuble extends JPanel{
 	public NewPanMeuble(Fenetre m){
 		this.j=m;
 		this.setLayout(new GridBagLayout());
+		this.setBackground(new Color(185, 172, 136));
 		String[] chaines = new String[]{"Nom  :","Longueur (en cm) :","Largeur (en cm) :","Hauteur (en cm) :","Demontable :","Elements :","Longueur + (en cm) :","Largeur + (en cm) :","Hauteur + (en cm) :"};
 		JLabel[] chaine = new JLabel[9];
 		this.slide = new Slide[7];
@@ -153,6 +154,7 @@ public class NewPanMeuble extends JPanel{
 		this.pan[6].add(this.lab[6][1]);
 		this.pan[6].add(this.slide[6]);
 		this.pan[6].add(this.lab[6][2]);
+		for(int ui=0;ui<7;ui++)this.pan[ui].setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
 		////////////////////////////////////////
 
 		this.longu = this.slide[0].getValue();
@@ -216,7 +218,7 @@ public class NewPanMeuble extends JPanel{
 	public void ecrit(){
 		Meuble x = new Meuble();
 		x.setNom(this.field.getText());
-		x.setLong(this.slide[1].getValue());
+		x.setLong(this.slide[0].getValue());
 		x.setLarg(this.slide[1].getValue());
 		x.setHaut(this.slide[2].getValue());
 		x.setDemont(this.bool);
@@ -226,7 +228,7 @@ public class NewPanMeuble extends JPanel{
 		x.setHautt(this.slide[6].getValue());
 		Model v = new Model();
 		v.Ecriture(this,x);
-		this.j.menu();
+		this.j.nInventaire();
 	}
 	public void change(){
 		for(int i = 0;i<7;i++){

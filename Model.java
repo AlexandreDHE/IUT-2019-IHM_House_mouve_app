@@ -95,34 +95,34 @@ public class Model extends JComponent{
 		this.v=a;
 		this.repaint();
 	}
-	public void delete(Meuble a){
+	public void deleteMeuble(String a){
 		try{
-			PreparedStatement statement = this.connec.prepareStatement("DELETE FROM Meuble WHERE nom=? AND longueur=? AND larg=? AND haut=? AND demontable=? AND elt=? AND longu=? AND large=? AND hautt=?");
-			System.out.println(a.getNom());
-			System.out.println(a.getLong());
-			System.out.println(a.getLarg());
-			System.out.println(a.getHaut());
-			System.out.println(a.getDemont());
-			System.out.println(a.getElt());
-			System.out.println(a.getLongg());
-			System.out.println(a.getLargg());
-			System.out.println(a.getHautt());
-			statement.setString(1,a.getNom());
-			statement.setInt(2,a.getLong());
-			statement.setInt(3,a.getLarg());
-			statement.setInt(4,a.getHaut());
-			statement.setBoolean(5,a.getDemont());
-			statement.setInt(6,a.getElt());
-			statement.setInt(7,a.getLongg());
-			statement.setInt(8,a.getLargg());
-			statement.setInt(9,a.getHautt());
+			PreparedStatement statement = this.connec.prepareStatement("DELETE FROM Meuble WHERE nom=?");
+			statement.setString(1,a);
 			statement.executeUpdate();
 		}catch(SQLException e){
 			System.err.println("Erreur de suppression");
 			System.exit(1);
 		}
-		this.Lecture();
-		this.repaint();
+	}
+	public void deleteCarton(String a){
+		String[] x = this.getRooms();
+		int i=0;
+		while(i<x.length){
+			i++;
+		}
+		if(i>1){
+			try{
+				PreparedStatement statement = this.connec.prepareStatement("DELETE FROM Carton WHERE chambre=?");
+				statement.setString(1,a);
+				statement.executeUpdate();
+			}catch(SQLException e){
+				System.err.println("Erreur de suppression");
+				System.exit(1);
+			}
+		}else{
+			JOptionPane.showMessageDialog(null, "Un Carton doit etre declare");
+		}
 	}
 	public boolean changeValCarton(String u,AllCarton t,int curseur,int valeur){
 		String x=null;
@@ -178,9 +178,9 @@ public class Model extends JComponent{
 		return room;
 	}
 	public void Ecriture(NewPanMeuble j,Meuble a){
-		if(!a.getDemont()){
+		if(a.getDemont()){
 			try{
-				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`, `elt`, `longu`, `large`, `hautt`) VALUES (?,?,?,?,?,?,?,?,?)");
+				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`, `elt`, `longu`, `large`, `hautt`) VALUES (?,?,?,?,?,?,?,?,?);");
 				statement.setString(1,a.getNom());
 				statement.setInt(2,a.getLong());
 				statement.setInt(3,a.getLarg());
@@ -196,7 +196,7 @@ public class Model extends JComponent{
 			}
 		}else{
 			try{
-				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`) VALUES (?,?,?,?,?");
+				PreparedStatement statement = this.connec.prepareStatement("INSERT INTO `Meuble`(`nom`, `longueur`, `larg`, `haut`, `demontable`) VALUES (?,?,?,?,?)");
 				statement.setString(1,a.getNom());
 				statement.setInt(2,a.getLong());
 				statement.setInt(3,a.getLarg());
@@ -248,8 +248,5 @@ public class Model extends JComponent{
 			System.exit(1);
 		}
 		return cart;
-	}
-	public void actu(){
-		this.a.actu();
 	}
 }

@@ -29,15 +29,15 @@ public class Fenetre extends JFrame{
 		this.pan.add(this.bn,"3");
 		this.pan.add(this.b,"4");
 		this.pan.add(this.u,"5");
-		this.setResizable(false);
 		this.add(pan);
 	}
 	public void next(){
-		this.inv.actu();
 		this.card.next(this.pan);
 	}
+	public void newCarton(){
+		this.card.show(this.pan,"3");
+	}
 	public void previous(){
-		this.inv.actu();
 		this.card.previous(this.pan);
 	}
 	public void nCarton(String[] rooms){
@@ -46,11 +46,16 @@ public class Fenetre extends JFrame{
 		this.pan.add(u,"4");
 		this.card.show(this.pan,"4");
 	}
+	public void nInventaire(){
+		Inventaire yu = new Inventaire(this);
+		this.pan.remove(this.inv);
+		this.pan.add(yu,"2");
+		this.card.show(this.pan,"2");
+	}
 	public void carton(){
 		this.card.show(this.pan,"4");
 	}
 	public void menu(){
-		this.inv.revalidate();
 		this.card.show(this.pan,"1");
 	}
 	public void inventaire(){

@@ -8,37 +8,46 @@ public class Menu extends JPanel{
 	public Menu(Fenetre a){
 		super();
 		this.b=a;
-		GridLayout grid = new GridLayout(5,1);
-		grid.setVgap(75);
-		this.setLayout(grid);
-		JPanel pan = new JPanel();
-		pan.setLayout(new GridLayout(1,3));
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx=1;
+		c.gridy=0;
+		c.gridheight = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(15,15,15,15);
+		c.weightx = 1.0f;
+		c.weighty = 1.0f;
+		c.fill = GridBagConstraints.BOTH;
 		JLabel titre = new JLabel(new ImageIcon("mr.png"));
-		titre.setHorizontalAlignment(JLabel.CENTER);
-		JPanel e = new JPanel();
-		pan.add(e);
-		pan.add(titre);
-		pan.add(new JPanel());
-		this.add(pan,BorderLayout.CENTER);
+		this.add(titre,c);
+		c.gridx=0;
+		this.add(new JPanel(),c);
+		c.gridx=2;
+		this.add(new JPanel(),c);
+		c.gridx=1;
+		c.gridy=1;
 		CarreRond inventaire = new CarreRond(this);
 		inventaire.change(0);
+		this.add(inventaire,c);
+		c.gridy=2;
 		CarreRond cartons = new CarreRond(this);
 		cartons.change(1);
+		this.add(cartons,c);
+		c.gridy=3;
 		CarreRond devis = new CarreRond(this);
 		devis.change(2);
+		this.add(devis,c);
+		c.gridy=4;
 		CarreRond dev = new CarreRond(this);
 		dev.change(3);
+		this.add(dev,c);
 		inventaire.addMouseListener(new Movve(inventaire));
 		cartons.addMouseListener(new Movvve(this,cartons));
-		devis.addMouseListener(new Movve(devis));
-		dev.addMouseListener(new Movve(dev));
-		this.add(inventaire);
-		this.add(cartons);
-		this.add(devis);
-		this.add(dev);
+		devis.addMouseListener(new Surbrillance(devis));
+		dev.addMouseListener(new Surbrillance(dev));
 	}
 	public void inventaire(){
-		this.b.next();
+		this.b.inventaire();
 	}
 	public void carton(){
 		this.b.carton();

@@ -16,7 +16,7 @@ public class NewMeuble extends JPanel{
 		c.weighty = 1.0f;
 		c.fill=GridBagConstraints.BOTH;
 		Img ret = new Img("ret1.png");
-		ret.addMouseListener(new Mouse(b));
+		ret.addMouseListener(new Listen(b));
 		ret.addMouseListener(new Movve(ret));
 		this.add(ret,c);
 		c.gridx = 1;

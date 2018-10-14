@@ -18,8 +18,12 @@ public class ActionText implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e){
 		Model t=new Model();
-		if(t.changeValCarton(this.n,this.z,this.cur,Integer.parseInt(e.getActionCommand()))){
-			this.a.setText(e.getActionCommand());	
+		try{
+			if(t.changeValCarton(this.n,this.z,this.cur,Integer.parseInt(e.getActionCommand()))){
+				this.a.setText(e.getActionCommand());	
+			}
+		}catch(NumberFormatException ee){
+			JOptionPane.showMessageDialog(this.z, "Veuillez entrer un nombre");
 		}
 		this.u.setText("");
 	}
