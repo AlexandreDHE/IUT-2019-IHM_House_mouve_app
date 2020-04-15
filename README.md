@@ -4,5 +4,5 @@
 This project consisted in creating an IHM for a part of the moving application. This program is only a functional model of the user experience and not the final development of it.
 
 ## Development Team
-**Alexandre DELAHOUSSE** 
+**Alexandre DELAHOUSSE & ** 
 **Majdi Baaziz**   
