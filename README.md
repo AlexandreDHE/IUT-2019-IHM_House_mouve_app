@@ -5,4 +5,4 @@ This project consisted in creating an IHM for a part of the moving application. 
 
 ## Development Team
 **Alexandre DELAHOUSSE** 
-**&Majdi Baaziz**   
+**& Majdi Baaziz**   
